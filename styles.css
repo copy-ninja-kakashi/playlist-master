@@ -1,0 +1,363 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+    background: #000000;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative; /* Allows positioning of the import button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#import-btn {
+    position: absolute;
+    left: 1rem;
+    background: #000000;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+#import-btn i {
+    margin-right: 0.5rem;
+    font-size: 1.25rem; /* Size of the import icon */
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+#main-content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+#playlist {
+  flex: 1;
+  padding-right: 1rem;
+  max-width: 30%;
+  overflow-y: auto;
+}
+#song-details {
+    flex: 3;
+    height: 380px;
+    height: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+#track-list, #song-list {
+    list-style: none;
+    padding: 0;
+}
+
+#track-list li, #song-list li {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+footer {
+  background: #000000;
+  color: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between; /* Space between elements */
+  align-items: center; /* Center items vertically */
+}
+
+#controls {
+  display: flex;
+  justify-content: center; /* Center play buttons */
+  flex-grow: 1; /* Allow this section to grow and fill space */
+  margin-left: 4rem;
+}
+
+#save-btn {
+  background: #000000;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+
+
+#controls button {
+  margin: 0 0.5rem; /* Space between buttons */
+}
+
+button {
+    background: #000000;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+
+button i {
+    pointer-events: none;
+}
+
+button:hover {
+    background: #333333;
+}
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0rem;
+}
+
+thead th {
+  background-color: #000000;
+  color: white;
+  cursor: pointer;
+  padding: 0.2rem;
+  position: sticky; 
+  top: 0; 
+  z-index: 1; 
+}
+
+tbody td {
+  padding: 1rem;
+  border: 0.4px solid #ddd;
+  text-align: center;
+}
+
+#song-details {
+  flex: 3;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 0rem;
+  border-radius: 5px;
+  overflow-y: auto;
+  max-height: calc(100vh - 160px);
+}
+
+#progress-container {
+  width: 100%;
+  background-color: #4caf50;
+  border-radius: 0;
+  display: none; /* Initially hidden */
+}
+
+#progress-bar {
+  width: 0%;
+  height: 20px;
+  background-color: #4caf50;
+  text-align: center;
+  line-height: 20px; /* Vertically centers the percentage text */
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.selected {
+  background-color: #929292; /* Highlight color for selected row */
+  color: rgb(0, 0, 0); /* Text color for the selected row */
+}
+
+
+#context-menu {
+  position: absolute; /* To position it based on mouse click */
+  background-color: #333; /* Background color of the menu */
+  border: 1px solid #ccc; /* Border for the menu */
+  z-index: 1000; /* Ensure it is on top of other elements */
+  display: none; /* Hidden by default */
+}
+
+#context-menu ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+#context-menu li {
+  padding: 8px 12px; /* Padding for menu items */
+  color: #000000; /* Change text color to white */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: background-color 0.2s ease; /* Smooth transition for background */
+}
+
+#context-menu li:hover {
+  background-color: #555; /* Change background on hover */
+  color: #ffffff; /* Ensure text color remains white on hover */
+}
+
+/* Style for the Add Playlist button */
+.add-playlist-btn {
+  background-color: transparent;
+  border: none;
+  color: #000000; /* Adjust the color to match your theme */
+  font-size: 20px; /* Adjust the size of the icon */
+  cursor: pointer;
+  margin-left: 45px; /* Space between the title and the button */
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+#playlist h2 {
+  display: flex;                 /* Enable flexbox layout */
+  justify-content: space-between; /* Space out title and button */
+  align-items: center;          /* Vertically center align items */
+  margin: 0 0 10px;            /* Remove default margin, add space below */
+}
+/* Hover effect */
+.add-playlist-btn:hover {
+  background-color: transparent;
+  color: #5e5e5e; /* Change color on hover */
+}
+
+/* Playlist section styles */
+#playlist {
+  background-color: #ffffff; 
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+
+
+#play-list {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+#play-list li {
+  color: #000000;  
+  background-color: #ffffff; /* List item background */
+  padding: 10px;
+  margin: 0; /* Spacing between list items */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+/* Hover effect for list items */
+#play-list li:hover {
+  background-color: #4CAF50; /* Change background color on hover */
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.selected-playlist {
+  background-color: #4CAF50!important; /* Green background */
+  color: rgb(0, 0, 0)!important; 
+  font-weight: bold; /* Bold text */
+}
+
+#playlistContextMenu {
+  position: absolute; /* To position it based on mouse click */
+  background-color: #333; /* Background color of the menu */
+  border: 1px solid #ccc; /* Border for the menu */
+  z-index: 1000; /* Ensure it is on top of other elements */
+  display: none; /* Hidden by default */
+}
+
+#playlistContextMenu ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+#playlistContextMenu li {
+  padding: 8px 12px; /* Padding for menu items */
+  color: #000000; /* Change text color to white */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: background-color 0.2s ease; /* Smooth transition for background */
+}
+
+#playlistContextMenu li:hover {
+  background-color: #555; /* Change background on hover */
+  color: #ffffff; /* Ensure text color remains white on hover */
+}
+
+
+#play-progress-container {
+  width: 100%;
+  height: 10px; /* Height of the container */
+  background-color: #f1f1f1; /* Background color of the track */
+  margin: 0px 0; /* Space above and below the bar */
+  position: relative; /* Positioning for child elements */
+}
+
+#play-progress-bar {
+  -webkit-appearance: none; /* Remove default styles */
+  appearance: none; /* Remove default styles */
+  width: 100%; /* Full width */
+  height: 10px; /* Height of the track */
+  background: transparent; /* Make the background transparent */
+  position: absolute; /* Position over the filled progress */
+  z-index: 2; /* Ensure it is above the fill */
+}
+
+/* WebKit (Chrome, Safari) styles */
+#play-progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default styles */
+  appearance: none; /* Remove default styles */
+  height: 10px; /* Height of the thumb */
+  width: 18px; /* Width of the thumb */
+  background: #4CAF50; /* Color of the thumb */
+  cursor: pointer; /* Pointer cursor */
+  margin-bottom: 4px;
+  margin-left: -10px;
+  z-index: 3; /* Ensure the thumb is above the fill */
+}
+
+
+/* Filled progress bar */
+#progress-fill {
+  height: 100%;
+  width: 0; /* Start with 0% width */
+  background-color: #4CAF50; /* Color of the filled progress */
+  position: absolute; /* Position it absolutely */
+  top: 0; /* Align it to the top */
+  left: 0; /* Align it to the left */
+  z-index: 1; /* Ensure it is below the thumb */
+  transition: width 0.1s ease; /* Smooth transition for width change */
+}

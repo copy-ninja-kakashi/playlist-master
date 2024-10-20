@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Effects</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script> <!-- Include p5.sound -->
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block; /* Prevents scroll bars from appearing */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let audio; // Variable to hold audio
+        let amplitude; // Amplitude analyzer
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+
+            // Initialize p5.js sound library audio
+            audio = createAudio(window.localStorage.getItem('currentSong')); // Use p5.js createAudio
+            audio.volume(1); // Set volume (1 is max)
+
+            amplitude = new p5.Amplitude(); // Create Amplitude analyzer
+            amplitude.setInput(audio); // Set Amplitude input to audio
+            
+            audio.play(); // Play the audio
+        }
+
+        function draw() {
+            background(0); // Set background to black
+
+            // Get amplitude level
+            const level = amplitude.getLevel(); // Get amplitude level
+
+            // Draw a ring (circle) based on amplitude
+            drawAmplitudeRing(level);
+        }
+
+        function drawAmplitudeRing(level) {
+            const radius = map(level, 0, 1, 0, 500); // Map amplitude to ring size
+
+            // Draw a white ring
+            stroke(255); // Set stroke color to white
+            strokeWeight(10); // Set ring thickness
+            noFill(); // No fill for the ring
+            ellipse(width / 2, height / 2, radius, radius); // Draw the ring
+        }
+
+        // Adjust canvas size on window resize
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+    </script>
+</body>
+</html>

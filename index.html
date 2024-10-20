@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlist Master</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.js"></script>
+
+
+  
+</head>
+<body>
+  <div id="app">
+    <header>
+      <button id="import-btn"><i class="fas fa-file-import"></i> Import</button>
+      <input type="file" id="file-input" style="display:none;" accept=".flac">
+      <h1>Playlist Master</h1>
+    </header>
+
+    <!-- Loading bar for import process -->
+    <div id="progress-container">
+      <div id="progress-bar">Loading</div>
+    </div>
+
+    <main>
+      <section id="main-content">
+        <section id="playlist">
+          <h2>Playlists
+            <button id="add-playlist-btn" class="add-playlist-btn">
+              <i class="fas fa-plus"></i>
+            </button>
+          </h2>
+          <ul id="play-list">
+            <!-- Playlists will be inserted here -->
+          </ul>
+        </section>
+
+        <section id="song-details">
+          <table id="song-table">
+            <thead>
+              <tr>
+                <th data-column="name">Song Name</th>
+                <th data-column="key">Key</th>
+                <th data-column="tempo">Tempo</th>
+                <th data-column="genre">Genre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Song details will be inserted here -->
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+    <!-- Audio Progress Bar -->
+    <div id="play-progress-container">
+      <input type="range" id="play-progress-bar" value="0" max="100" />
+      <div id="progress-fill"></div> <!-- Filled progress bar -->
+  </div>
+    <footer>
+      <section id="controls">
+        <button id="prev-btn"><i class="fas fa-backward"></i></button>
+        <button id="play-pause-btn"><i class="fas fa-play"></i></button>
+        <button id="next-btn"><i class="fas fa-forward"></i></button>
+      </section>
+      <button id="save-btn"><i class="fas fa-save"></i></button>
+    </footer>
+
+    <!-- Audio Player -->
+    <audio id="audio-player" controls style="display: none;"></audio>
+  </div>
+
+  <!-- Context Menu Delete -->
+<div id="context-menu" style="display: none; position: absolute; background-color: white; border: 1px solid #ccc; z-index: 1000;">
+  <ul>
+    <li id="remove-song">Delete</li>
+    <li id="create-visual-effect">Create Visual Effect</li>
+  </ul>
+</div>
+
+<!-- Context menu for playlists -->
+<div id="playlistContextMenu" style="display: none; position: absolute; background-color: white; border: 1px solid #ccc; z-index: 1000;">
+  <ul>
+    <li id="delete-playlist">Delete Playlist</li>
+  </ul>
+</div>
+  <script src="renderer.js"></script>
+  
+</body>
+</html>

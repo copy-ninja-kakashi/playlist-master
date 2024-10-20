@@ -1,0 +1,58 @@
+{
+  "name": "playlist-master",
+  "productName": "Playlist Master",
+  "version": "1.0.0",
+  "description": "Playlist master",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "Zhang Kaihuai",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^32.1.2",
+    "electron-builder": "^25.1.7",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.0.0",
+    "fs-extra": "^10.0.0",
+    "python-shell": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.example.yourapp",
+    "productName": "Playlist Master",
+    "files": [
+        "venv/**/*",
+        "main.js",
+        "index.html",
+        "preload.js",
+        "visualization.html",
+        "styles.css",
+        "X_val_features.npy",
+        "svm_model.pkl",
+        "scaler.pkl",
+        "label_encoder.pkl",
+        "cnn_model.h5",
+        "importer.py",
+        "renderer.js",
+        "ffmpeg",
+        "node_modules/**/*"
+    ],
+    
+    "asar": false
+  },
+      
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+}
